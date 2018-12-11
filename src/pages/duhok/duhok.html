@@ -1,0 +1,67 @@
+<!--
+  Generated template for the DuhokPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>مدينة دهوك </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <img src="assets/imgs/back-ground.jpg"/>
+   
+  <ion-card  text-right (click)="goToDuhokrestaurantPage()">
+
+    <ion-card-content  >
+      <ion-card-title>
+    المطاعم  <ion-icon name="restaurant" color="danger" ></ion-icon>
+        
+     
+        </ion-card-title>
+      
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card text-right  (click)="goToDuhokhotelPage()">
+     
+      <ion-card-content>
+        <ion-card-title>
+       الفنادق
+       <ion-icon name="star" color="primary"></ion-icon>
+          </ion-card-title>
+        
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card text-right (click)="goToDuhokresortsPage()">
+        
+        <ion-card-content>
+          <ion-card-title>
+       المصايف
+       <ion-icon name="rose" color="danger"></ion-icon>
+            </ion-card-title>
+          
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card text-right  (click)="goToThinltodoinduhokPage()">
+         
+          <ion-card-content>
+            <ion-card-title>
+         أشياء للقيام بها
+         
+         <ion-icon name="people" color="danger" ></ion-icon>
+              </ion-card-title>
+            
+          </ion-card-content>
+        </ion-card>
+</ion-content>

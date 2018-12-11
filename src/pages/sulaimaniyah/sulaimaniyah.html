@@ -1,0 +1,69 @@
+<!--
+  Generated template for the SulaimaniyahPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>مدينة السليمانية</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <img src="assets/imgs/Sulaymaniyahbackground.jpg"/>
+   
+  <ion-card  text-right (click)="goToSulaimaniyahresturantPage()">
+
+    <ion-card-content>
+      <ion-card-title>
+    المطاعم  <ion-icon name="restaurant" color="danger"></ion-icon>
+        
+     
+        </ion-card-title>
+      
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card text-right  pading  (click)="goToSulaimaniyahhotelPage()">
+     
+      <ion-card-content>
+        <ion-card-title>
+       الفنادق
+       <ion-icon name="star" color="primary"></ion-icon>
+          </ion-card-title>
+        
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card text-right  (click)="goToSulaimaniyahresortsPage()">
+        
+        <ion-card-content>
+          <ion-card-title>
+       المصايف
+       <ion-icon name="rose" color="danger"></ion-icon>
+            </ion-card-title>
+          
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card text-right   (click)="goToThingtodoinsulimaniayPage()">
+         
+          <ion-card-content>
+            <ion-card-title>
+         أشياء للقيام بها
+         
+         <ion-icon name="people" color="danger" ></ion-icon>
+              </ion-card-title>
+            
+          </ion-card-content>
+        </ion-card>
+
+
+</ion-content>
