@@ -1,4 +1,4 @@
-page-about {
+page-suggestion {
     .toolbar-background-md {
         
         background: #3688a1;
@@ -34,8 +34,10 @@ page-about {
     
 
 }
-.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
-    color: #ffffff;
-    
-}
+.button-md {
+       
+    color: #fff;
+    background-color: #3688a1;
+    text-transform: lowercase;
+ }
 }

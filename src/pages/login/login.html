@@ -1,0 +1,43 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>تسجيل الدخول</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list inset>
+    <ion-item>
+      <ion-label floating  text-right>البريد الالكتروني</ion-label>
+      <ion-input type="text" [(ngModel)]='data.email'></ion-input>
+    </ion-item>
+   
+      <ion-item>
+        <ion-label floating text-right>كلمة السر</ion-label>
+        <ion-input type="password" [(ngModel)]='data.password'></ion-input>
+      </ion-item>
+
+
+    
+      
+      <ion-item>
+        <button ion-button block  large (click)="login()">دخول</button>
+      </ion-item>
+
+        
+        <ion-item text-center>
+          <button ion-button block large (click)="goToRegister()">تسجيل</button>
+        </ion-item>
+
+      
+
+    </ion-list>
+</ion-content>

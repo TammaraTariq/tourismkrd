@@ -28,6 +28,32 @@ import { SulaimaniyahhotelPage } from '../pages/sulaimaniyahhotel/sulaimaniyahho
 import { SulaimaniyahresortsPage } from '../pages/sulaimaniyahresorts/sulaimaniyahresorts';
 import { ThingtodoinsulimaniayPage } from '../pages/thingtodoinsulimaniay/thingtodoinsulimaniay';
 
+import { AngularFireModule } from '@angular/fire';
+ import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/auth'
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+
+// import { AngularFireDatabase } from '@angular/fire/database';
+import { AddserviceplaceProvider } from '../providers/addserviceplace/addserviceplace';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
+
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyA_v2fekvJ5b-IFJQtuNPxlWJeW6OIJaLM",
+  authDomain: "tourismkrd-f40db.firebaseapp.com",
+  databaseURL: "https://tourismkrd-f40db.firebaseio.com",
+  projectId: "tourismkrd-f40db",
+  storageBucket: "",
+  messagingSenderId: "627850458051"
+};
+
+
+
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -49,11 +75,18 @@ import { ThingtodoinsulimaniayPage } from '../pages/thingtodoinsulimaniay/thingt
     SulaimaniyahresturantPage,
     SulaimaniyahhotelPage,
     SulaimaniyahresortsPage,
-    ThingtodoinsulimaniayPage
+    ThingtodoinsulimaniayPage,
+   LoginPage,
+   RegisterPage,
+   SuggestionPage,
+  
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,13 +109,22 @@ import { ThingtodoinsulimaniayPage } from '../pages/thingtodoinsulimaniay/thingt
     SulaimaniyahresturantPage,
     SulaimaniyahhotelPage,
     SulaimaniyahresortsPage,
-    ThingtodoinsulimaniayPage
+    ThingtodoinsulimaniayPage,
+    LoginPage,
+    RegisterPage,
+    SuggestionPage,
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     InAppBrowser,
+    AngularFireAuthModule,
+    AuthServiceProvider,
+    AngularFireAuth,
+    AddserviceplaceProvider,
+  
   ]
 })
 export class AppModule {}

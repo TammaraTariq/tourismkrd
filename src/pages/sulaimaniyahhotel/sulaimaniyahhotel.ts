@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
-
+import { Locations } from '../../model/location';
+import { AddserviceplaceProvider } from '../../providers/addserviceplace/addserviceplace';
+ 
 /**
  * Generated class for the SulaimaniyahhotelPage page.
  *
@@ -15,6 +17,15 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
   templateUrl: 'sulaimaniyahhotel.html',
 })
 export class SulaimaniyahhotelPage {
+
+
+  locations:Locations={
+    namePlace:'',
+    linkFace:'',
+  }
+
+
+
 
   url1 : string ="https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-467822_dev-desktop_los-1_bw-10_dow-Friday_defdate-1_room-0_lang-en_curr-IQD_gstadt-2_rateid-0_aud-0_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-09-28;checkout=2018-09-29;city=-3103288;highlighted_hotels=467822;hlrd=with_av;keep_landing=1;redirected=1;source=hotel&utm_campaign=IQ&utm_content=los-1_bw-10_dow-Friday_lang-en_curr-IQD_gstadt-2_rateid-0_aud-0_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-467822&"
   url2 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-593593_dev-desktop_los-1_bw-10_dow-Friday_defdate-1_room-0_lang-en_curr-IQD_gstadt-2_rateid-0_aud-0_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-09-28;checkout=2018-09-29;city=-3103288;highlighted_hotels=593593;hlrd=with_av;keep_landing=1;redirected=1;source=hotel&utm_campaign=IQ&utm_content=los-1_bw-10_dow-Friday_lang-en_curr-IQD_gstadt-2_rateid-0_aud-0_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-593593&" 
@@ -33,9 +44,10 @@ export class SulaimaniyahhotelPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private inappbrowser: InAppBrowser) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private inappbrowser: InAppBrowser,public alertCtrl: AlertController,
+    public addserviceplaceProvider: AddserviceplaceProvider) {
   }
-efwewee
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad SulaimaniyahhotelPage');
   }
@@ -156,4 +168,22 @@ efwewee
     }
     const browser = this.inappbrowser.create(this.url13, '_self', options)
   }
+
+  
+addNewPlace(locations:Locations){
+  this.addserviceplaceProvider.addLocationSulimaniHotel(locations).then(ref => {
+    this.showAlert()
+  })
+   // this.showAlert()
+ 
+ }
+ showAlert() {
+   const alert = this.alertCtrl.create({
+     title: '!شكراً لك',
+     subTitle: '!تم الارسال بنجاح',
+     buttons: ['تم']
+   });
+   alert.present();
+ }
+ 
 }

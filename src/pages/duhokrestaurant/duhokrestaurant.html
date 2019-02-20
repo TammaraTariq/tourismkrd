@@ -670,6 +670,43 @@
 
 
   
+<!-- ---------------------- -->
+<br>
+<br>
+<br>
+
+
+
+
+
+
+<ion-card>
+    <ion-card-header text-right>
+      : اضف مطعم في مدينة دهوك 
+    </ion-card-header>
+    <ion-card-content>
+      
+        <ion-list >
+
+            <ion-item >
+              <ion-input type="text" [(ngModel)]='locations.namePlace' placeholder="اسم المطعم" text-right></ion-input>
+            </ion-item>
+          
+            <ion-item >
+              <ion-input type="text" [(ngModel)]='locations.linkFace' placeholder="الصفحة الخاصة بالمطعم (الرابط)" text-right></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <button ion-button (click)="addNewPlace(locations)">أرسال</button>
+            </ion-item>
+          
+          </ion-list>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
 
 
 

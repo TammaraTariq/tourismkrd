@@ -227,5 +227,46 @@
               </ion-card-content>
             </ion-card> 
 
+<!-- ---------------------- -->
+<br>
+<br>
+<br>
+
+
+
+
+
+
+<ion-card>
+    <ion-card-header text-right>
+      : اضف مصيف في مدينة السليمانية 
+    </ion-card-header>
+    <ion-card-content>
+      
+        <ion-list >
+
+            <ion-item >
+              <ion-input type="text" [(ngModel)]='locations.namePlace' placeholder="اسم المصيف" text-right></ion-input>
+            </ion-item>
+          
+            <ion-item >
+              <ion-input type="text" [(ngModel)]='locations.linkFace' placeholder="اين يقع ؟؟" text-right></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <button ion-button (click)="addNewPlace(locations)">أرسال</button>
+            </ion-item>
+          
+          </ion-list>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
 
 </ion-content>

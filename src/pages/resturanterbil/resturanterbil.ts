@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
-
+import { Locations } from '../../model/location';
+import { AddserviceplaceProvider } from '../../providers/addserviceplace/addserviceplace';
+ 
 /**
  * Generated class for the ResturanterbilPage page.
  *
@@ -15,6 +17,14 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
   templateUrl: 'resturanterbil.html',
 })
 export class ResturanterbilPage {
+
+
+  locations:Locations={
+    namePlace:'',
+    linkFace:'',
+  }
+
+
 
 url : string = "https://www.facebook.com/salehia.erbil/";
 url1 : string ="https://www.facebook.com/abcrestauranterbil/";
@@ -82,7 +92,11 @@ url60 : string = "https://www.facebook.com/wingerserbil/"
 url61 : string = "https://www.facebook.com/shkarfish/photos/pcb.595832430614664/595832047281369/?type=3";
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private inappbrowser: InAppBrowser) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private inappbrowser: InAppBrowser,
+              public alertCtrl: AlertController,
+              public addserviceplaceProvider: AddserviceplaceProvider) {
   }
 
   ionViewDidLoad() {
@@ -640,4 +654,28 @@ openfacebook61(){
   }
   const browser = this.inappbrowser.create(this.url61, '_self', options)
 }
+
+
+
+
+
+
+addNewPlace(locations:Locations){
+ this.addserviceplaceProvider.addLocationErbilRest(locations).then(ref => {
+   this.showAlert()
+ })
+  // this.showAlert()
+
+}
+showAlert() {
+  const alert = this.alertCtrl.create({
+    title: '!شكراً لك',
+    subTitle: '!تم الارسال بنجاح',
+    buttons: ['تم']
+  });
+  alert.present();
+}
+
+
+
 }

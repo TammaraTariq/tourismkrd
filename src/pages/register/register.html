@@ -1,0 +1,46 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>تسجيل</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label  floating text-right>الاسم</ion-label>
+    <ion-input  [(ngModel)]='data.name'  type="text"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label  floating text-right>البريد الالكتروني</ion-label>
+    <ion-input  [(ngModel)]='data.email'  type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating text-right>كلمة السر</ion-label>
+    <ion-input  [(ngModel)]='data.password'   type="password"></ion-input>
+  </ion-item>
+
+
+
+  <ion-item>
+    <button ion-button block  large (click)="register()">تسجيل</button>
+  </ion-item>
+
+
+
+  <!-- <ion-item>
+      <button ion-button large (click)="register()">تسجيل</button>
+    </ion-item> -->
+
+
+    
+</ion-content>

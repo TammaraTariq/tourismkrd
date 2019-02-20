@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { Locations } from '../../model/location';
+import { AddserviceplaceProvider } from '../../providers/addserviceplace/addserviceplace';
+
+
 /**
  * Generated class for the ErbilhotelPage page.
  *
@@ -14,6 +18,14 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
   templateUrl: 'erbilhotel.html',
 })
 export class ErbilhotelPage {
+
+  locations:Locations={
+    namePlace:'',
+    linkFace:'',
+  }
+
+
+
 url1 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-572255_dev-desktop_los-1_bw-11_dow-Sunday_defdate-1_room-0_lang-en_curr-IQD_gstadt-2_rateid-0_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-08-12;checkout=2018-08-13;city=-3106433;highlighted_hotels=572255;hlrd=with_av;keep_landing=1;redirected=1;source=hotel&utm_campaign=IQ&utm_content=los-1_bw-11_dow-Sunday_lang-en_curr-IQD_gstadt-2_rateid-0_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-572255&"
 url2 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-580481_dev-desktop_los-1_bw-11_dow-Sunday_defdate-1_room-0_lang-en_curr-IQD_gstadt-2_rateid-0_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-08-12;checkout=2018-08-13;city=-3106433;highlighted_hotels=580481;hlrd=with_av;keep_landing=1;redirected=1;source=hotel&utm_campaign=IQ&utm_content=los-1_bw-11_dow-Sunday_lang-en_curr-IQD_gstadt-2_rateid-0_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-580481&"
 url3 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-1342727_dev-desktop_los-1_bw-11_dow-Sunday_defdate-1_room-0_lang-en_curr-IQD_gstadt-2_rateid-geo_rate_iq_domestic_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-08-12;checkout=2018-08-13;city=-3106433;highlighted_hotels=1342727;hlrd=with_av;keep_landing=1;redirected=1;source=hotel&utm_campaign=IQ&utm_content=los-1_bw-11_dow-Sunday_lang-en_curr-IQD_gstadt-2_rateid-geo_rate_iq_domestic_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-1342727&";
@@ -62,7 +74,9 @@ url42 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;la
 
 
 
-constructor(public navCtrl: NavController, public navParams: NavParams,  private inappbrowser: InAppBrowser) {
+constructor(public navCtrl: NavController, public navParams: NavParams,  private inappbrowser: InAppBrowser,
+  public alertCtrl: AlertController,
+  public addserviceplaceProvider: AddserviceplaceProvider) {
   }
 
   ionViewDidLoad() {
@@ -404,4 +418,23 @@ constructor(public navCtrl: NavController, public navParams: NavParams,  private
     }
     const browser = this.inappbrowser.create(this.url42, '_self', options)
   }
+
+
+
+
+  addNewPlace(locations:Locations){
+    this.addserviceplaceProvider.addLocationErbilHotel(locations).then(ref => {
+      this.showAlert()
+    })
+     // this.showAlert()
+   
+   }
+   showAlert() {
+     const alert = this.alertCtrl.create({
+       title: '!شكراً لك',
+       subTitle: '!تم الارسال بنجاح',
+       buttons: ['تم']
+     });
+     alert.present();
+   }
 }

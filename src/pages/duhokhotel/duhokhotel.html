@@ -430,6 +430,47 @@
   </ion-card>
 
 
+<!-- ---------------------- -->
+<br>
+<br>
+<br>
+
+
+
+
+
+
+<ion-card>
+    <ion-card-header text-right>
+      : اضف فندق في مدينة دهوك 
+    </ion-card-header>
+    <ion-card-content>
+      
+        <ion-list >
+
+            <ion-item >
+              <ion-input type="text" [(ngModel)]='locations.namePlace' placeholder="اسم الفندق" text-right></ion-input>
+            </ion-item>
+          
+            <ion-item >
+              <ion-input type="text" [(ngModel)]='locations.linkFace' placeholder="الصفحة الخاصة بالفندق (الرابط)" text-right></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <button ion-button (click)="addNewPlace(locations)">أرسال</button>
+            </ion-item>
+          
+          </ion-list>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
 
 
 </ion-content>

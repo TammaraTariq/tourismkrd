@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { Locations } from '../../model/location';
+import { AddserviceplaceProvider } from '../../providers/addserviceplace/addserviceplace';
 
 /**
  * Generated class for the DuhokrestaurantPage page.
@@ -15,6 +17,17 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
   templateUrl: 'duhokrestaurant.html',
 })
 export class DuhokrestaurantPage {
+
+  
+  locations:Locations={
+    namePlace:'',
+    linkFace:'',
+  }
+
+
+
+
+
 url1 : string = "https://www.facebook.com/maltarest/?hc_ref=ARQsr6pn-naAHtt0Qdcwv-rZm5Sk4LtZ86ShpXw3uI2npmpy6A3Q9rO8x5ftKPbrf-Y&fref=nf";
 url2 : string = "https://www.facebook.com/VikingsPizzaDuhok/";
 url3 : string = "https://www.facebook.com/MawallVeniceRestaurants/?ref=br_rs";
@@ -51,7 +64,11 @@ url31 : string ="https://www.facebook.com/Sarkypizza/"
 url32 : string = "https://www.facebook.com/XaringehaForat/"
 url33 : string = "https://www.facebook.com/milanosofficial/"
 
-constructor(public navCtrl: NavController, public navParams: NavParams, private inappbrowser: InAppBrowser) {
+constructor(public navCtrl: NavController,
+            public navParams: NavParams, 
+            private inappbrowser: InAppBrowser,
+            public alertCtrl: AlertController,
+            public addserviceplaceProvider: AddserviceplaceProvider) {
   }
 
   ionViewDidLoad() {
@@ -335,4 +352,19 @@ constructor(public navCtrl: NavController, public navParams: NavParams, private 
     const browser = this.inappbrowser.create(this.url33, '_self', options)
   }
 
+  addNewPlace(locations:Locations){
+    this.addserviceplaceProvider.addLocationDuhokRest(locations).then(ref => {
+      this.showAlert()
+    })
+     // this.showAlert()
+   
+   }
+   showAlert() {
+     const alert = this.alertCtrl.create({
+       title: '!شكراً لك',
+       subTitle: '!تم الارسال بنجاح',
+       buttons: ['تم']
+     });
+     alert.present();
+   }
 }

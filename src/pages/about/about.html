@@ -1,14 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-     مدن كردستان
+     مدن كوردستان
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="ios-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    
   </ion-navbar>
 </ion-header>
 
 <ion-content text-center >
   <div padding>
-    <img src="assets/imgs/34543546.png"/></div>
+    <img src="assets/imgs/top_logo.png"/></div>
     <ion-card  text-center (click)="goToErbilPage()">
       <ion-card-content  >
         <ion-card-title>

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
-
+import { Locations } from '../../model/location';
+import { AddserviceplaceProvider } from '../../providers/addserviceplace/addserviceplace';
+ 
 /**
  * Generated class for the DuhokhotelPage page.
  *
@@ -15,6 +17,12 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
   templateUrl: 'duhokhotel.html',
 })
 export class DuhokhotelPage {
+  locations:Locations={
+    namePlace:'',
+    linkFace:'',
+  }
+
+
 url1 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-1813698_dev-desktop_los-1_bw-18_dow-Sunday_defdate-1_room-0_lang-en_curr-IQD_gstadt-1_rateid-0_aud-102523374_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-09-16;checkout=2018-09-17;city=-3104831;highlighted_hotels=1813698;hlrd=with_av;keep_landing=1;redirected=1;source=hotel;sr_show_room=181369801_113624631_1_1_0&utm_campaign=IQ&utm_content=los-1_bw-18_dow-Sunday_lang-en_curr-IQD_gstadt-1_rateid-0_aud-102523374_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-1813698&"
 url2 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-593606_dev-desktop_los-1_bw-18_dow-Sunday_defdate-1_room-0_lang-en_curr-IQD_gstadt-1_rateid-0_aud-102523374_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-09-16;checkout=2018-09-17;city=-3104831;highlighted_hotels=593606;hlrd=with_av;keep_landing=1;redirected=1;source=hotel;sr_show_room=59360605_103805715_0_0_0&utm_campaign=IQ&utm_content=los-1_bw-18_dow-Sunday_lang-en_curr-IQD_gstadt-1_rateid-0_aud-102523374_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-593606&"
 url3 : string = "https://www.booking.com/searchresults.en-gb.html?aid=356938;label=metagha-link-localuniversalIQ-hotel-384116_dev-desktop_los-1_bw-18_dow-Sunday_defdate-1_room-0_lang-en_curr-IQD_gstadt-1_rateid-0_aud-102523374_cid-72;sid=470eea140d00fa85a777dfb9dfac84be;checkin=2018-09-16;checkout=2018-09-17;city=-3104831;highlighted_hotels=384116;hlrd=with_av;keep_landing=1;redirected=1;source=hotel;sr_show_room=38411607_106931533_0_1_0&utm_campaign=IQ&utm_content=los-1_bw-18_dow-Sunday_lang-en_curr-IQD_gstadt-1_rateid-0_aud-102523374_cid-72&utm_medium=localuniversal&utm_source=metagha&utm_term=hotel-384116&"
@@ -35,7 +43,8 @@ url17 : string ="https://www.facebook.com/raniapalace/"
 url18 : string = "https://www.facebook.com/HOJIN-HOTEL-1402295606556100/"
 url19 : string = "https://www.facebook.com/Sheraton-Dohuk-Hotel-Staff-878577932196473/"
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private inappbrowser: InAppBrowser) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private inappbrowser: InAppBrowser,   public alertCtrl: AlertController,
+    public addserviceplaceProvider: AddserviceplaceProvider) {
   }
 
   ionViewDidLoad() {
@@ -193,4 +202,23 @@ url19 : string = "https://www.facebook.com/Sheraton-Dohuk-Hotel-Staff-8785779321
     }
     const browser = this.inappbrowser.create(this.url19, '_self',options)
   }
+
+  addNewPlace(locations:Locations){
+    this.addserviceplaceProvider.addLocationDohokHotel(locations).then(ref => {
+      this.showAlert()
+    })
+     // this.showAlert()
+   
+   }
+   showAlert() {
+     const alert = this.alertCtrl.create({
+       title: '!شكراً لك',
+       subTitle: '!تم الارسال بنجاح',
+       buttons: ['تم']
+     });
+     alert.present();
+   }
+   
+
+   
 }

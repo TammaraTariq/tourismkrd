@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
-
+import { Locations } from '../../model/location';
+import { AddserviceplaceProvider } from '../../providers/addserviceplace/addserviceplace';
+ 
 /**
  * Generated class for the SulaimaniyahresturantPage page.
  *
@@ -15,6 +17,14 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
   templateUrl: 'sulaimaniyahresturant.html',
 })
 export class SulaimaniyahresturantPage {
+  locations:Locations={
+    namePlace:'',
+    linkFace:'',
+  }
+
+
+
+
 
   url1 : string = "https://www.facebook.com/Falafelo-%D9%81%D9%84%D8%A7%D9%81%D9%8A%D9%84%D9%88-947983028562346/"
   url2 : string = "https://www.facebook.com/Dawa-Restaurant-5-Stars-237943596389457/?rf=177935322276871"
@@ -108,7 +118,8 @@ url89 : string = "https://www.facebook.com/Protein-court-1588220164590921/"
 url90 : string = "https://www.facebook.com/Shawrmay-shayan-2063289363950475/"
 url91 : string = "https://www.facebook.com/ChocolatePoint2018/?ref=nearby_places"
 
-constructor(public navCtrl: NavController, public navParams: NavParams, private inappbrowser: InAppBrowser) {
+constructor(public navCtrl: NavController, public navParams: NavParams, private inappbrowser: InAppBrowser, public alertCtrl: AlertController,
+  public addserviceplaceProvider: AddserviceplaceProvider) {
   }
 
   ionViewDidLoad() {
@@ -918,4 +929,21 @@ constructor(public navCtrl: NavController, public navParams: NavParams, private 
     }
     const browser = this.inappbrowser.create(this.url91, '_self', options)
   }
+
+  
+addNewPlace(locations:Locations){
+  this.addserviceplaceProvider.addLocationSulimaniRest(locations).then(ref => {
+    this.showAlert()
+  })
+   // this.showAlert()
+ 
+ }
+ showAlert() {
+   const alert = this.alertCtrl.create({
+     title: '!شكراً لك',
+     subTitle: '!تم الارسال بنجاح',
+     buttons: ['تم']
+   });
+   alert.present();
+ }
 }
